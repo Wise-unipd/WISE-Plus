@@ -17,7 +17,7 @@
 
     <div class="wise-footer__links">
         <a href="<c:url value='/auth/catalog'/>" class="wise-footer__link wise-clean-link">Catalog</a>
-        <a href="mailto:support@wise.com?subject=Contact%20Support" class="wise-footer__link wise-clean-link">Support</a>
+        <a href="mailto:wise.unipd@gmail.com?subject=Contact%20Support" class="wise-footer__link wise-clean-link">Support</a>
     </div>
 
 </footer>
