@@ -44,7 +44,7 @@
 
     <div class="wise-auth-form-col">
         <header class="wise-auth-form-head">
-            <span>Need help? <a href="mailto:support@wise.com?subject=Contact%20Support">Contact support</a></span>
+            <span>Need help? <a href="mailto:wise.unipd@gmail.com?subject=Contact%20Support">Contact support</a></span>
             <a href="<c:url value='/'/>" class="wise-clean-link">
                 <div class="wordmark wise-auth-logo-mobile--visible">
                     <span>WISE</span>
