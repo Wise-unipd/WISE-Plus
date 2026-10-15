@@ -60,7 +60,7 @@ If you don't want to register, you can log in using one of these predefined acco
 
 By default, the system already contains some movies. To view their associated posters:
 
-1. Go to the [Releases](../../releases) section of this repository and download `uploads.zip`
+1. Go to the [latest release](../../releases/latest) of this repository and download `uploads.zip` from the release assets
 2. Ensure that the `data/uploads` folder exists in the root directory (if it doesn't exist yet, simply create it)
 3. Extract the contents of `uploads.zip` directly into `data/uploads/`  
 
