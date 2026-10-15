@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- project identification -->
+    <groupId>it.unipd.dei.webapp</groupId>
+    <artifactId>wise-app</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <!-- project info -->
+    <name>Movie Rent</name>
+    <description>Web Applications Project 2025/26</description>
+    <url>https://bitbucket.org/upd-dei-stud-prj/wa2526-wise</url>
+
+    <organization>
+        <name>Università di Padova</name>
+        <url>https://www.unipd.it</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>cavalli</id>
+            <name>Cavalli Riccardo</name>
+            <email>riccardo.cavalli@studenti.unipd.it</email>
+        </developer>
+        <developer>
+            <id>fossato</id>
+            <name>Fossato Gianmarco</name>
+            <email>gianmarco.fossato@studenti.unipd.it</email>
+        </developer>
+        <developer>
+            <id>tiberio</id>
+            <name>Tiberio Filippo</name>
+            <email>filippo.tiberio@studenti.unipd.it</email>
+        </developer>
+        <developer>
+            <id>zanatta</id>
+            <name>Zanatta Riccardo</name>
+            <email>riccardo.zanatta@studenti.unipd.it</email>
+        </developer>
+        <developer>
+            <id>zonta</id>
+            <name>Zonta Angelica</name>
+            <email>angelica.zonta@studenti.unipd.it</email>
+        </developer>
+    </developers>
+
+    <!-- project properties -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.release>21</maven.compiler.release>
+        <jakarta.servlet.version>6.1.0</jakarta.servlet.version>
+        <log4j.version>2.22.1</log4j.version>
+        <postgresql.version>42.7.2</postgresql.version>
+        <compiler.plugin.version>3.12.1</compiler.plugin.version>
+        <war.plugin.version>3.4.0</war.plugin.version>
+        <javadoc.plugin.version>3.6.3</javadoc.plugin.version>
+        <jakarta.jstl.version>3.0.0</jakarta.jstl.version>
+        <glassfish.jstl.version>3.0.1</glassfish.jstl.version>
+        <jackson.version>2.14.2</jackson.version>
+        <jackson-databind.version>2.14.2</jackson-databind.version>
+        <nimbus-jose-jwt.version>10.0.2</nimbus-jose-jwt.version>
+    </properties>
+
+    <!-- project dependencies -->
+    <dependencies>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>jakarta.mail</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.javatuples</groupId>
+            <artifactId>javatuples</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>${jakarta.jstl.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>${glassfish.jstl.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>${nimbus-jose-jwt.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
+
+        <!-- Syncs Log4j with Tomcat's lifecycle, preventing memory leaks by safely stopping background threads during local app reloads -->
+        <!-- <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+            <version>${log4j.version}</version>
+            <scope>runtime</scope>
+        </dependency> -->
+
+    </dependencies>
+
+    <!-- build phase configuration -->
+    <build>
+        <plugins>
+            <!-- project compilation -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler.plugin.version}</version>
+            </plugin>
+
+            <!-- create WAR file -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${war.plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <reporting>
+        <outputDirectory>${basedir}/site</outputDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${javadoc.plugin.version}</version>
+                <configuration>
+                    <author>true</author>
+                    <show>protected</show>
+                    <doctitle>${project.name} ${project.version} - Web Applications Project</doctitle>
+                    <windowtitle>${project.artifactId} ${project.version}</windowtitle>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>

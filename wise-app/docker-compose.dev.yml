@@ -1,0 +1,78 @@
+name: wise-source
+
+services:
+  db:
+    # lightweight PostgreSQL image
+    image: postgres:17-alpine
+    container_name: wise-db
+    hostname: wise-db
+    # automatically restart the container unless manually stopped
+    restart: unless-stopped
+    ports:
+      - "${PG_PORT}:5432"
+    environment:
+      # database name
+      POSTGRES_DB: ${PG_DB}
+      # root user credentials 
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      # app user credentials
+      APP_DB_USER: ${APP_DB_USER}
+      APP_DB_PASS: ${APP_DB_PASS}
+      # time zone management
+      TZ: ${TZ}
+      PGTZ: ${PGTZ}
+    volumes:
+      # bash initialization script
+      - ./src/main/database/wise-init.sh:/docker-entrypoint-initdb.d/init.sh
+      # SQL scripts
+      - ./src/main/database/wise-schema.sql:/tmp/sql/wise-schema.sql
+      - ./src/main/database/wise-insert.sql:/tmp/sql/wise-insert.sql
+      # volume for DB data persistence
+      - ./data/database:/var/lib/postgresql/data
+    healthcheck:
+      # verify that the database is actually ready
+      test: [ "CMD-SHELL", "pg_isready -U ${APP_DB_USER} -d ${PG_DB}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - wise-network
+
+  app:
+    # Tomcat image (JRE only, because we don't need a compiler)
+    image: tomcat:11.0.20-jre21-temurin-noble
+    container_name: wise-app
+    hostname: wise-app
+    # automatically restart the container unless manually stopped
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT}:8080"
+    environment:
+      TZ: ${TZ}
+      # special environment variable (used by catalina.sh)
+      CATALINA_OPTS: "-DDB_URL=jdbc:postgresql://db:5432/${PG_DB} -DDB_USER=${APP_DB_USER} -DDB_PASS=${APP_DB_PASS} -DUPLOAD_PATH=${UPLOAD_PATH}"
+      JWT_SECRET: ${JWT_SECRET}
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASS: ${MAIL_PASS}
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_PORT: ${MAIL_PORT}
+    # the app only starts when the database has successfully passed the healthcheck
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      # copy and rename the generated war file
+      - ./target/${APP_ARTIFACT_ID}-${APP_VERSION}.war:/usr/local/tomcat/webapps/ROOT.war
+      # volume mapping for logs
+      - ./data/logs:/usr/local/tomcat/logs
+      # persistent volume for user-uploaded files
+      - ./data/uploads:${UPLOAD_PATH}
+    networks:
+      - wise-network
+
+networks:
+  wise-network:
+    # enable communication between containers
+    driver: bridge

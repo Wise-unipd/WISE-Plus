@@ -1,0 +1,69 @@
+.users-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.users-header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.users-search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--bg-1);
+    padding: 16px 24px;
+    border-radius: var(--card-radius);
+    border: 1px solid var(--line);
+    transition: all .15s;
+}
+
+.users-search-bar:focus-within {
+    border-color: var(--accent);
+    background: var(--bg-2);
+}
+
+.users-search-input {
+    appearance: none;
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    color: var(--ink);
+    font-family: var(--sans), sans-serif;
+    font-size: 16px;
+    outline: none;
+    transition: all .15s;
+}
+
+.users-search-input::placeholder {
+    color: var(--ink-faint);
+}
+
+.users-search-input:focus {
+    outline: none;
+}
+
+.users-alert {
+    padding: 16px;
+    background: color-mix(in srgb, var(--danger) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--danger) 30%, transparent);
+    border-radius: var(--radius);
+    color: var(--ink);
+}
+
+.wise-table__body .users-empty-msg {
+    text-align: center;
+    padding: 32px 16px;
+}
+
+.wise-table__body .users-error-msg {
+    color: var(--danger);
+}
+
+.go-back {
+    margin-bottom: 1rem;
+    align-self: flex-start;
+}

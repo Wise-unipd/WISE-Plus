@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <!-- configure JNDI objects -->
+    <Resource name="jdbc/wise_db"
+              auth="Container"
+              type="javax.sql.DataSource"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              driverClassName="org.postgresql.Driver"
+              url="${DB_URL}"
+              username="${DB_USER}"
+              password="${DB_PASS}"
+              maxActive="50"
+              minIdle="10"
+              maxWait="10000"
+              initialSize="5"
+              timeBetweenEvictionRunsMillis="30000"
+              testOnBorrow="true"
+              validationQuery="SELECT 1"
+              removeAbandonedTimeout="60"
+              removeAbandoned="true"
+    />
+
+    <!-- application file system manager -->
+    <Resources>
+        <!--
+          Define a directory external to the application in which to store uploads.
+
+          In particular:
+          - "base" is the real directory on the file system of the server.
+          - "webAppMount" is the virtual path through which uploads will be accessible from the browser.
+        -->
+        <PostResources className="org.apache.catalina.webresources.DirResourceSet"
+                       base="${UPLOAD_PATH}"
+                       webAppMount="/uploads"
+        />
+    </Resources>
+</Context>

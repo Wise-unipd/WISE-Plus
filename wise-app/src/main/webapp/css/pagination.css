@@ -1,0 +1,31 @@
+.wise-pagination {
+    padding: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.wise-pagination__list {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.wise-pagination__scroll-btn {
+    text-transform: uppercase;
+    padding: 0.5rem 1.875rem;
+    border-radius: 6rem;
+}
+
+.wise-pagination .wise-btn {
+    padding: 0.5rem 1rem;
+}
+
+.wise-pagination .wise-btn--primary {
+    cursor: default; 
+    pointer-events: none;
+}
+
+.wise-pagination__separator {
+    color: var(--ink-muted);
+    font-weight: 700;
+}

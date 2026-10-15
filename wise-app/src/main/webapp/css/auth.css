@@ -1,0 +1,373 @@
+
+
+/*Css del aside a sx*/
+.wise-auth {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.wise-auth-show {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-1);
+    border-right: 1px solid var(--line);
+    padding: 40px var(--pad);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.wise-auth-show-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 3;
+}
+
+.wise-auth-show-body {
+    position: relative;
+    z-index: 3;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px 0;
+}
+
+.wise-auth-headline {
+    font-family: var(--serif), sans-serif;
+    font-weight: 400;
+    font-size: clamp(48px, 6.5vw, 96px); /*Il clamp qui aiuta molto fino al 'taglio'*/
+    line-height: 0.92;
+    margin: 0 0 32px;
+    text-wrap: balance;
+}
+
+.wise-auth-headline em {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.wise-auth-show-foot {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 24px;
+}
+
+.wise-auth-stats {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 32px;
+}
+
+.wise-auth-stat-num {
+    font-family: var(--serif), sans-serif;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--ink);
+}
+
+.wise-auth-stat-lbl {
+    font-family: var(--mono), monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 6px;
+}
+
+
+/*Css del div a dx (unico visibile in mobile)*/
+.wise-auth-form-col {
+    display: flex;
+    flex-direction: column;
+    padding: 40px var(--pad);
+    background: var(--bg-0);
+    height: 100%;
+    overflow-y: auto;
+}
+
+.wise-auth-form-head {
+    display: flex;
+    flex-direction: row-reverse; /*brutto ma un bel trucchetto per non gestire robe strane in switch con mobile*/
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-faint);
+}
+
+.wise-auth-form-head a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.wise-auth-form-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 48px 0;
+}
+
+.wise-auth-form-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.wise-auth-form-eyebrow .wise-mono {
+    color: var(--accent);
+}
+
+.wise-auth-form-eyebrow-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--line-soft);
+}
+
+.wise-auth-form-title {
+    font-family: var(--serif), sans-serif;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 0.95;
+    margin: 0 0 12px;
+    text-wrap: balance;
+}
+
+.wise-auth-form-deck {
+    font-family: var(--serif), sans-serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-muted);
+    margin: 0 0 36px;
+    max-width: 380px;
+    line-height: 1.5;
+}
+
+.wise-strength {
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.wise-strength-bar {
+    flex: 1;
+    height: 3px;
+    background: var(--bg-3);
+    border-radius: 2px;
+    transition: background .25s;
+}
+
+.wise-strength-bar.is-on-1 {
+    background: var(--danger);
+}
+
+.wise-strength-bar.is-on-2 {
+    background: oklch(0.78 0.16 60);
+}
+
+.wise-strength-bar.is-on-3 {
+    background: oklch(0.78 0.14 100);
+}
+
+.wise-strength-bar.is-on-4 {
+    background: var(--success);
+}
+
+.wise-auth-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 24px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 0;
+    border-radius: var(--radius);
+    font-family: var(--sans), sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all .15s;
+    margin-top: 8px;
+}
+
+.wise-auth-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.wise-auth-alt-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 13px 18px;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 500;
+    transition: all .15s;
+}
+
+.wise-auth-foot-help {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 13px;
+    color: var(--ink-muted);
+    text-align: center;
+}
+
+.wise-auth-foot-help a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.wise-magic-sent {
+    text-align: center;
+    padding: 24px 0;
+}
+
+.wise-magic-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.18);
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    border: 1px solid rgba(var(--accent), 0.35);
+}
+
+.wise-magic-title {
+    font-family: var(--serif), sans-serif;
+    font-size: 32px;
+    line-height: 1;
+    margin: 0 0 12px;
+}
+
+.wise-magic-body {
+    color: var(--ink-muted);
+    font-size: 14px;
+    margin: 0 0 24px;
+    line-height: 1.6;
+}
+
+.wise-magic-email {
+    display: inline-block;
+    padding: 4px 10px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-family: var(--mono), monospace;
+    font-size: 12px;
+    color: var(--ink);
+}
+
+.wise-magic-text {
+    display:block;
+    margin-top:12px;
+    font-size:12px;
+    color:var(--ink-faint);
+}
+
+@media (max-width: 880px) {
+    .wise-auth {
+        grid-template-columns: 1fr;
+    }
+
+    .wise-auth-show {
+        min-height: auto;
+        padding: 28px var(--pad);
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .wise-auth-form-col {
+        min-height: auto;
+    }
+
+    .wise-field-row {
+        grid-template-columns: 1fr;
+    }
+
+    .wise-auth-headline {
+        font-size: clamp(40px, 9vw, 56px);
+    }
+}
+
+.wise-auth-logo-mobile--visible {
+    visibility: hidden;
+}
+
+.wise-auth-logo-mobile--hidden {
+    display: flex;
+}
+
+.wise-auth-error-text {
+    color: var(--danger);
+    margin-bottom: 12px;
+}
+
+.wise-lost-password {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--serif), sans-serif;
+    font-size: 11px;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+@media (max-width: 880px) {
+    .wise-auth-logo-mobile--visible {
+        visibility: visible;
+    }
+
+    .wise-auth-logo-mobile--hidden {
+        display: none;
+    }
+}
+
+@media (hover: hover) {
+    .wise-auth-form-head a:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .wise-auth-submit:hover {
+        background: oklch(from var(--accent) calc(l + 0.04) c h);
+        transform: translateY(-1px);
+    }
+
+    .wise-auth-alt-btn:hover {
+        background: var(--bg-1);
+        border-color: var(--ink-muted);
+    }
+
+    .wise-auth-foot-help a:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+}

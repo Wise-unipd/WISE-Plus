@@ -1,0 +1,31 @@
+.cards-grid {
+    display: grid;
+    /* By setting low minimum values we can avoid setting max-width (relying only on the main container) */
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+    width: 100%;
+    gap: 24px;
+    padding: 56px 0;
+}
+
+.cards-grid--no-padding {
+    padding: 0;
+}
+
+.wise-card-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 880px) {
+    .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 18px;
+    }
+}
+
+@media (max-width: 380px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,0 +1,31 @@
+.go-back {
+    margin-bottom: 1rem;
+}
+
+.change-role-form {
+    max-width: 400px;
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Error Message */
+.error-banner {
+    margin-top: 32px;
+    padding: 16px;
+    background: rgba(127, 29, 29, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    border-radius: var(--radius);
+    color: #fecaca;
+}
+
+.error-banner__title {
+    font-weight: 700;
+}
+
+.error-banner__details {
+    font-size: 0.875rem;
+    opacity: 0.8;
+}

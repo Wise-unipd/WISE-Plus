@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_1.xsd"
+         version="6.1">
+
+    <!-- ======================== Application Info ======================== -->
+    <display-name>Movie Rent</display-name>
+    <description>Web Applications Project 2025/26</description>
+
+    <!-- ======================== Welcome Files ========================== -->
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
+
+    <!-- ======================== Context info ========================== -->
+    <context-param>
+        <param-name>jakarta.servlet.jsp.jstl.fmt.locale</param-name>
+        <param-value>en_EN</param-value>
+    </context-param>
+
+    <!-- ======================== Filters ================================ -->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>it.unipd.dei.webapp.filters.AuthFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>StaffFilter</filter-name>
+        <filter-class>it.unipd.dei.webapp.filters.StaffFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>NavigationFilter</filter-name>
+        <filter-class>it.unipd.dei.webapp.filters.NavigationFilter</filter-class>
+    </filter>
+
+    <!-- ======================== Filter Mappings ======================== -->
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/auth/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>StaffFilter</filter-name>
+        <url-pattern>/auth/staff/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>NavigationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- ======================== Servlets =============================== -->
+    <servlet>
+        <servlet-name>RestDispatcher</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.RestDispatcherServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.catalog.HomeServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.authentication.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>MagicLinkRequestServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.authentication.MagicLinkRequestServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>MagicLinkValidationServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.authentication.MagicLinkValidationServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.authentication.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.authentication.RegisterServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ViewProfile</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.users.ViewProfileServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UpdateProfile</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.users.UpdateProfileServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.users.ChangePasswordServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DBCheckServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.test.DBCheckServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffAddAgeRatingServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.agerating.StaffAddAgeRatingServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffEditAgeRatingServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.agerating.StaffEditAgeRatingServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffDeleteAgeRatingServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.agerating.StaffDeleteAgeRatingServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffAgeRatingsServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.agerating.StaffAgeRatingsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>GetMovieDetailsServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.movie.GetMovieDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>MovieCatalog</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.catalog.MovieCatalogServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Person</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.worker.PersonServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ProfilesServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.users.ProfilesServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ChangeUserRole</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.users.ChangeUserRoleServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.catalog.SearchServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CategoryServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.category.CategoryServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.rentals.PaymentServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ExtendRentServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.rentals.ExtendRentServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>WishlistServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.catalog.WishlistServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>WatchMovie</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.rentals.WatchMovieServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Workers</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.worker.StaffWorkersServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AddWorker</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.worker.StaffAddWorkerServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>EditWorker</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.worker.StaffEditWorkerServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DeleteWorker</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.worker.StaffDeleteWorkerServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Genres</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.genre.StaffGenresServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AddGenre</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.genre.StaffAddGenreServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>EditGenre</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.genre.StaffEditGenreServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DeleteGenre</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.genre.StaffDeleteGenreServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Languages</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.language.StaffLanguagesServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AddLanguage</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.language.StaffAddLanguageServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>EditLanguage</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.language.StaffEditLanguageServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DeleteLanguage</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.language.StaffDeleteLanguageServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffMovies</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.movie.StaffMoviesServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SaveMovie</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.movie.StaffSaveMovieServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ToggleMovie</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.movie.StaffToggleMovieServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffToggleCategoryServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.category.StaffToggleCategoryServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffCategoriesServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.category.StaffCategoriesServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffAddCategoryServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.category.StaffAddCategoryServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffEditCategoryServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.category.StaffEditCategoryServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffGenresWithStatusServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.genre.StaffGenresWithStatusServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffCategoriesWithStatusServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.category.StaffCategoriesWithStatusServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffCreditsServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.worker.StaffCreditsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DashboardServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.DashboardServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>RentalsServlet</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.rentals.RentalsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>RefundRent</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.rentals.RefundRentServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>Stats</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.StatsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffAudiosWithStatus</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.language.StaffAudiosWithStatusServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StaffSubtitlesWithStatus</servlet-name>
+        <servlet-class>it.unipd.dei.webapp.servlet.language.StaffSubtitlesWithStatusServlet</servlet-class>
+    </servlet>
+
+
+
+    <!-- ======================== Servlet Mappings ======================= -->
+    <servlet-mapping>
+        <servlet-name>RestDispatcher</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>MagicLinkRequestServlet</servlet-name>
+        <url-pattern>/login-help</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>MagicLinkValidationServlet</servlet-name>
+        <url-pattern>/login-help-validation/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ViewProfile</servlet-name>
+        <url-pattern>/auth/profile/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UpdateProfile</servlet-name>
+        <url-pattern>/auth/profile-update</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/auth/change-password</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ProfilesServlet</servlet-name>
+        <url-pattern>/auth/staff/profiles</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ChangeUserRole</servlet-name>
+        <url-pattern>/auth/profile/change-role/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DBCheckServlet</servlet-name>
+        <url-pattern>/check_db</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffAddAgeRatingServlet</servlet-name>
+        <url-pattern>/auth/staff/age-ratings/add-age-rating</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffEditAgeRatingServlet</servlet-name>
+        <url-pattern>/auth/staff/age-ratings/edit-age-rating</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffDeleteAgeRatingServlet</servlet-name>
+        <url-pattern>/auth/staff/age-ratings/delete-age-rating</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffAgeRatingsServlet</servlet-name>
+        <url-pattern>/auth/staff/age-ratings</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Workers</servlet-name>
+        <url-pattern>/auth/staff/workers</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AddWorker</servlet-name>
+        <url-pattern>/auth/staff/workers/add-worker</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EditWorker</servlet-name>
+        <url-pattern>/auth/staff/workers/edit-worker</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DeleteWorker</servlet-name>
+        <url-pattern>/auth/staff/workers/delete-worker</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Genres</servlet-name>
+        <url-pattern>/auth/staff/genres</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AddGenre</servlet-name>
+        <url-pattern>/auth/staff/genres/add-genre</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EditGenre</servlet-name>
+        <url-pattern>/auth/staff/genres/edit-genre</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DeleteGenre</servlet-name>
+        <url-pattern>/auth/staff/genres/delete-genre</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Languages</servlet-name>
+        <url-pattern>/auth/staff/languages</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AddLanguage</servlet-name>
+        <url-pattern>/auth/staff/languages/add-language</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EditLanguage</servlet-name>
+        <url-pattern>/auth/staff/languages/edit-language</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DeleteLanguage</servlet-name>
+        <url-pattern>/auth/staff/languages/delete-language</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffMovies</servlet-name>
+        <url-pattern>/auth/staff/movies</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SaveMovie</servlet-name>
+        <url-pattern>/auth/staff/movies/save-movie</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ToggleMovie</servlet-name>
+        <url-pattern>/auth/staff/movies/toggle-movie</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffToggleCategoryServlet</servlet-name>
+        <url-pattern>/auth/staff/categories/toggle-category</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetMovieDetailsServlet</servlet-name>
+        <url-pattern>/auth/movie</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>MovieCatalog</servlet-name>
+        <url-pattern>/auth/catalog</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Person</servlet-name>
+        <url-pattern>/auth/person</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/auth/search</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CategoryServlet</servlet-name>
+        <url-pattern>/auth/category</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/auth/payment</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ExtendRentServlet</servlet-name>
+        <url-pattern>/auth/extend/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>WishlistServlet</servlet-name>
+        <url-pattern>/auth/wishlist</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>WatchMovie</servlet-name>
+        <url-pattern>/auth/watch/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffCategoriesServlet</servlet-name>
+        <url-pattern>/auth/staff/categories</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffAddCategoryServlet</servlet-name>
+        <url-pattern>/auth/staff/categories/add-category</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffEditCategoryServlet</servlet-name>
+        <url-pattern>/auth/staff/categories/edit-category</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffGenresWithStatusServlet</servlet-name>
+        <url-pattern>/auth/staff/movies/link-genres-to-movie</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffCategoriesWithStatusServlet</servlet-name>
+        <url-pattern>/auth/staff/movies/link-categories-to-movie</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffCreditsServlet</servlet-name>
+        <url-pattern>/auth/staff/movies/link-credits-to-movie</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DashboardServlet</servlet-name>
+        <url-pattern>/auth/staff/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Stats</servlet-name>
+        <url-pattern>/auth/staff/stats</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RentalsServlet</servlet-name>
+        <url-pattern>/auth/staff/rentals</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RefundRent</servlet-name>
+        <url-pattern>/auth/refund-rent</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffAudiosWithStatus</servlet-name>
+        <url-pattern>/auth/staff/movies/link-audios-to-movie</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StaffSubtitlesWithStatus</servlet-name>
+        <url-pattern>/auth/staff/movies/link-subtitles-to-movie</url-pattern>
+    </servlet-mapping>
+
+    <!-- ====================== Error Redirections ======================== -->
+    <error-page>
+        <error-code>400</error-code>
+        <location>/jsp/error.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/jsp/error.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/jsp/error.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>405</error-code>
+        <location>/jsp/error.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>413</error-code>
+        <location>/jsp/error.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/jsp/error.jsp</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/jsp/error.jsp</location>
+    </error-page>
+
+    <!-- ======================== Resources ============================== -->
+    <resource-ref>
+        <description>Database Connection Pool (via Tomcat)</description>
+        <res-ref-name>jdbc/wise_db</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+</web-app>

@@ -1,0 +1,63 @@
+.wise-status-msg {
+    max-width: 600px;
+    width: fit-content;
+    word-break: break-word;
+    margin: 1.125rem 0;
+    backdrop-filter: blur(12px);
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-style: solid; 
+}
+
+.wise-status-msg--success {
+    background-color: color-mix(in srgb, var(--success), transparent 80%);
+    color: var(--success);
+    border-color: color-mix(in srgb, var(--success), black 40%);
+}
+
+.wise-status-msg--error {
+    background-color: color-mix(in srgb, var(--danger), transparent 80%);
+    color: var(--danger);
+    border-color: color-mix(in srgb, var(--danger), black 40%);
+}
+
+.wise-status-msg__wrapper {
+    display: flex;
+    align-items: baseline;
+    padding: 0.75rem;
+    gap: 1.5rem;
+    min-height: 0;
+}
+
+.wise-status-msg__icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.wise-status-msg__content {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.wise-status-msg__content__text {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: pre-line;
+}
+
+.wise-status-msg__close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+@media (hover: hover) {
+    .wise-status-msg__close-btn:hover {
+        filter: brightness(1.08);
+    }
+}

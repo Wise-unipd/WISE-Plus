@@ -1,0 +1,77 @@
+.payment-wrapper {
+    display: flex;
+    justify-content: center;
+
+}
+
+.payment-card {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.payment-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.payment-summary__movie {
+    font-family: var(--serif);
+    font-size: 40px;
+    color: var(--ink);
+    margin: 0;
+    text-align: center;
+}
+
+.payment-summary__total {
+    font-family: var(--mono), monospace;
+    font-size: 22px;
+    color: var(--accent);
+    margin: 0;
+    font-weight: 600;
+    text-align: center;
+}
+
+.payment-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.payment-actions .wise-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+    background: var(--bg-2);
+}
+
+.payment-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--mono), monospace;
+    font-size: 13px;
+}
+
+.payment-info-row strong {
+    color: var(--accent);
+}
+
+.payment-page .wise-field-label{
+    font-size: 15px;
+}

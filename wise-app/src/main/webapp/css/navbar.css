@@ -1,0 +1,182 @@
+.wise-header {
+    position: sticky; /*Così rimane visibile anche quando scrolliamo verso il basso*/
+    top: 0;
+    z-index: 50;
+    background: var(--bg-0);
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.wise-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px var(--pad); /*Sopra sotto fissi, dx/sx con il clamp nel global!*/
+    gap: 32px;
+}
+
+.wise-nav {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.wise-nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.wise-nav-link {
+    font-size: 13px;
+    color: var(--ink-muted);
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent; /*Così posso colorarlo nell'active, mantenendo gli spazi gousti*/
+    transition: color .15s, border-color .15s;
+}
+
+.wise-nav-link--active {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+}
+
+
+.wise-nav-link--active-icon {
+    color: var(--ink);
+    border-color: var(--accent);
+}
+
+
+.wise-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.wise-divider {
+    width: 1px;
+    height: 22px;
+    background: var(--line);
+}
+
+.wise-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 0;
+    color: var(--ink-muted);
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: var(--radius);
+}
+
+.wise-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-ink);
+    display: grid;
+    place-items: center;
+    font-family: var(--serif);
+    font-size: 14px;
+}
+
+.wise-logout {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink-muted);
+    padding: 7px 14px;
+    border-radius: var(--radius);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.wordmark {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+
+    font-family: var(--serif), sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+
+    color: var(--ink);
+}
+
+.wordmark-plus {
+    color: var(--accent);
+
+    font-family: var(--mono), monospace;
+    font-weight: 500;
+
+    font-size: 17px;
+    margin-left: 2px;
+
+    transform: translateY(-5px);
+    display: inline-block;
+}
+
+.wise-icon-btn-icon-size {
+    font-size: 14px;
+}
+
+
+.wise-nav-links-mobile-hidden {
+    display: grid;
+}
+
+.wise-nav-links-mobile-visible {
+    display: none;
+}
+
+@media (max-width: 880px) {
+
+    .wise-nav-links-mobile-hidden {
+        display: none;
+    }
+
+    .wise-nav-links-mobile-visible {
+        display: grid;
+    }
+
+    .wise-profile-name {
+        display: none;
+    }
+
+    .wise-nav {
+        gap: 6px;
+    }
+
+    .wise-icon-btn-icon-size {
+        font-size: 12px;
+    }
+
+    .wise-header-inner {
+        gap: 6px;
+    }
+
+    .wise-nav-actions {
+        gap: 6px;
+    }
+
+}
+
+@media (hover: hover) {
+    .wise-nav-link:hover {
+        color: var(--ink);
+    }
+
+    .wise-profile:hover {
+        color: var(--ink);
+        background: var(--bg-1);
+    }
+
+    .wise-logout:hover {
+        color: var(--ink);
+        border-color: var(--line-strong);
+    }
+}

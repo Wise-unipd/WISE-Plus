@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+The Log Files should end up in the following folders:
+
+./data/logs/wise-app/app.log
+./data/logs/wise-app/error.log
+./data/logs/wise-app/database.log
+
+And the Console Logs should be able to be viewed LIVE by using the following commands on terminal:
+    Just Tomcat app container:
+        docker logs -f wise-app
+    For both the app and the database simultaneously:
+        docker compose logs -f
+-->
+
+
+<Configuration status="WARN">
+
+    <Properties>
+        <!-- Folder where all log files will be saved to -->
+        <Property name="LOG_DIR">${sys:catalina.base}/logs/wise-app</Property>
+        <!-- Text format for every log entry -->
+        <!-- <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %highlight{%-5level} %logger{36} - %msg%n</Property> -->
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %highlight{%-5level} %logger{36}.%method(%file:%line)%n\tIP = %X{IP}; USER = %X{USER}; ACTION = %X{ACTION}; RESOURCE = %X{RESOURCE}%n\t%msg%n%throwable</Property>
+    </Properties>
+
+    <Appenders>
+
+        <!-- Prints logs directly to the system console (standard output) -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </Console>
+
+        <!-- Saves general application logs to a file called app.log -->
+        <RollingFile name="AppLog" fileName="${LOG_DIR}/app.log"
+                     filePattern="${LOG_DIR}/app-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="30" />
+        </RollingFile>
+
+        <!-- Saves only serious errors to error.log -->
+        <RollingFile name="ErrorLog" fileName="${LOG_DIR}/error.log"
+                     filePattern="${LOG_DIR}/error-%d{yyyy-MM-dd}.log.gz">
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+
+        <!-- Saves separately database info to database.log -->
+        <RollingFile name="DatabaseLog" fileName="${LOG_DIR}/database.log"
+                     filePattern="${LOG_DIR}/database-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers> <!-- based on the folder path of the class and level of info, appends to appropriate logs -->
+
+        <Logger name="it.unipd.dei.webapp.database" level="DEBUG" additivity="false">
+            <AppenderRef ref="DatabaseLog" />
+            <AppenderRef ref="ErrorLog" />
+            <AppenderRef ref="Console" />
+        </Logger>
+
+        <Logger name="it.unipd.dei.webapp.servlet" level="INFO" additivity="false">
+            <AppenderRef ref="AppLog" />
+            <AppenderRef ref="ErrorLog" />
+            <AppenderRef ref="Console" />
+        </Logger>
+
+        <!-- catch-all for anything else in the app-->
+        <Logger name="it.unipd.dei.webapp" level="INFO" additivity="false">
+            <AppenderRef ref="AppLog" />
+            <AppenderRef ref="ErrorLog" />
+            <AppenderRef ref="Console" />
+        </Logger>
+
+        <Logger name="org.apache.catalina" level="INFO" />
+
+        <Root level="INFO">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="AppLog" />
+            <AppenderRef ref="ErrorLog" />
+        </Root>
+    </Loggers>
+
+</Configuration>
+
+

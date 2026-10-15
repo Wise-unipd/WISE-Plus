@@ -1,0 +1,111 @@
+.wise-hero-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    padding: 100px var(--pad);
+}
+
+.wise-hero-welcome__info {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.wise-hero-welcome__eyebrow {
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.wise-hero-welcome__title {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 80px);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    margin: 0 auto 24px;
+    text-align: center;
+}
+
+.wise-hero-welcome__title__break {
+    display: block;
+}
+
+.wise-hero-welcome-message {
+    font-family: var(--serif), sans-serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.wise-hero-welcome__cta {
+    display: flex;
+    justify-content: center;
+    max-width: 340px;
+    width: 100%;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.carousel-section {
+    width: max-content;
+    max-width: 100%;
+    padding: 32px 0;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-section-head {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 0 var(--pad);
+    margin-bottom: 30px;
+}
+
+.carousel-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(28px, 3.2vw, 44px);
+    line-height: 1;
+    padding-left: 10px;
+    color: var(--ink);
+    border-left: 4px solid var(--accent);
+}
+
+.carousel-icon {
+    font-size: clamp(24px, 2.8vw, 40px);
+}
+
+.ranking-position-container {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    color: #000;
+    font-family: "Poppins", sans-serif;
+    font-size: 65px;
+    font-weight: 900;
+    line-height: 1;
+    -webkit-text-stroke: 4px #fff;
+    paint-order: stroke fill;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0 0.5));
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Mobile */
+@media (max-width: 880px) {
+    .ranking-position-container {
+        font-size: 55px;
+        left: -10px;
+    }
+}

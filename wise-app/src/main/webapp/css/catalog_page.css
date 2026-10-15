@@ -1,0 +1,45 @@
+.catalog-page-title-container {
+    padding: 40px var(--pad) 20px;
+}
+
+.catalog-section {
+    padding: 32px 0;
+}
+
+.catalog-section-head {
+    display: flex;
+    /* Since carousels can expand (there's no max-width), it might be a good idea
+       to place the 'Show more' link near the category title; otherwise, the user would 
+       have to look far to the right to find it */
+    /* justify-content: space-between; */
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 0 var(--pad);
+}
+
+.catalog-category-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(28px, 3.2vw, 44px);
+    line-height: 1;
+    padding-left: 10px;
+    color: var(--ink);
+    border-left: 4px solid var(--accent);
+}
+
+.catalog-more-link {
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: filter 0.2s;
+}
+
+@media (hover: hover) {
+    .catalog-more-link:hover {
+        filter: brightness(1.2);
+    }
+}

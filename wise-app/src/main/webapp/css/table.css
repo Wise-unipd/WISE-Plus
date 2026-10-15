@@ -1,0 +1,203 @@
+.wise-table-anchor {
+    display: block;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.wise-table-container {
+    background: var(--bg-1);
+    border-radius: var(--card-radius);
+    border: 1px solid var(--ink-faint);
+    overflow: hidden;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) var(--bg-1);
+}
+
+.wise-table-container::-webkit-scrollbar {
+    display: block;
+    height: 8px;
+}
+
+.wise-table-container::-webkit-scrollbar-track {
+    background: var(--bg-1);
+    border-radius: 4px;
+}
+
+.wise-table-container::-webkit-scrollbar-thumb {
+    background: var(--line-strong);
+    border-radius: 4px;
+    border: 2px solid var(--bg-1);
+}
+
+.wise-table {
+    border-collapse: collapse;
+}
+
+.wise-table--high-lower-spacing {
+    /* If the table has dropdowns */
+    margin-bottom: 120px;
+}
+
+.wise-table__head {
+    background-color: var(--bg-2);
+    color: var(--accent);
+}
+
+.wise-table__head .wise-table__row {
+    border-bottom: 1px solid var(--line);
+}
+
+.wise-table__head th {
+    font-size: 0.75rem;
+    line-height: 1.25;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.wise-table__body .wise-table__row:not(:last-child) {
+    border-bottom: 1px solid var(--line);
+}
+
+.wise-table__body td {
+    color: var(--ink-muted);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    padding: 0.875rem 1.5rem;
+    white-space: nowrap;
+}
+
+.wise-table__body .wise-table__entity-id {
+    font-family: var(--mono), monospace;
+}
+
+.wise-table__body .wise-table__entity-main {
+    /* Apply this class to the element(s) that most identify the entity (except the ID) */
+    color: var(--ink);
+    font-weight: 700;
+    white-space: normal;
+}
+
+.wise-table__entity-desc {
+    /* Apply this class to a child of <td> */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.wise-table__entity-status {
+    /* Apply this class to a child of <td> */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem 1rem;
+    border-radius: 1.5rem;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.wise-table__entity-status--active {
+    color: color-mix(in srgb, var(--success), white 20%);
+    background: color-mix(in srgb, var(--success) 15%, transparent);
+    border-color: color-mix(in srgb, var(--success) 15%, transparent);
+}
+
+.wise-table__entity-status--inactive {
+    color: color-mix(in srgb, var(--danger), white 20%);
+    background: color-mix(in srgb, var(--danger) 15%, transparent);
+    border-color: color-mix(in srgb, var(--danger) 15%, transparent);
+}
+
+.wise-table__action-container {
+    /* Apply this class to a child of <td> */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.wise-table__action-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    border-width: 1px;
+    border-style: solid;
+    transition: all .15s;
+}
+
+.wise-table__action-btn--normal {
+    background: transparent;
+    color: var(--ink-muted);
+    border-color: var(--line);
+}
+
+.wise-table__action-btn--public {
+    color: color-mix(in srgb, var(--success), white 20%);
+    background: color-mix(in srgb, var(--success) 15%, transparent);
+    border-color: color-mix(in srgb, var(--success) 15%, transparent);
+}
+
+.wise-table__action-btn--private {
+    color: color-mix(in srgb, var(--danger), white 20%);
+    background: color-mix(in srgb, var(--danger) 15%, transparent);
+    border-color: color-mix(in srgb, var(--danger) 15%, transparent);
+}
+
+.wise-table-container .wise-pagination {
+    position: sticky;
+    left: 0;
+    width: 100%;
+}
+
+.wise-table-container--auto {
+    width: 100%;
+    max-width: 650px;
+}
+
+.wise-table-container--auto .wise-table {
+    width: 100%;
+}
+
+.wise-table__body .wise-table__empty-msg {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.wise-table__body .wise-table__error-msg {
+    color: var(--danger);
+}
+
+@media (hover: hover) {
+    .wise-table-container::-webkit-scrollbar-thumb:hover {
+        background: var(--ink-dim);
+    }
+    
+    .wise-table__action-btn--normal:hover {
+        background: var(--bg-1);
+        color: var(--ink);
+        border-color: var(--line-strong);
+    }
+
+    .wise-table__action-btn--public:hover {
+        color: color-mix(in srgb, var(--success), white 0%);
+        background: color-mix(in srgb, var(--success) 20%, transparent);
+        border-color: color-mix(in srgb, var(--success) 35%, transparent);
+    }
+
+    .wise-table__action-btn--private:hover {
+        color: color-mix(in srgb, var(--danger), white 0%);
+        background: color-mix(in srgb, var(--danger) 20%, transparent);
+        border-color: color-mix(in srgb, var(--danger) 35%, transparent);
+    }
+}   

@@ -1,0 +1,80 @@
+.dash-container {
+    max-width: 1200px;
+    padding-top: 56px;
+}
+
+.dash-header {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.dash-title {
+    font-family: var(--serif), sans-serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--ink);
+}
+
+.dash-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.dash-section {
+    background: var(--bg-1);
+    border: 1px solid var(--line);
+    border-radius: var(--card-radius);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dash-section-title {
+    font-family: var(--mono), monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 24px 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.dash-link-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.dash-link-group .wise-btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.dash-link-group .wise-btn:only-child {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 720px) {
+    .dash-container {
+        padding: 32px var(--pad);
+    }
+
+    .dash-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .dash-section {
+        padding: 20px;
+    }
+
+    .dash-link-group {
+        grid-template-columns: 1fr;
+    }
+}

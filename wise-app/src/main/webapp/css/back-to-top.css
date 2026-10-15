@@ -1,0 +1,19 @@
+.wise-btn--back-to-top {
+    position: fixed;
+    bottom: var(--pad);
+    right: var(--pad);
+    z-index: 1000;
+    border: none;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all .3s ease;
+}
+
+.wise-btn--back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+

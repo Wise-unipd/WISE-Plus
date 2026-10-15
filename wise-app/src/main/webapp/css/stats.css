@@ -1,0 +1,65 @@
+.stats-section-container {
+    margin-bottom: 48px;
+}
+
+.stats-kpi-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 640px) {
+    .stats-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .stats-kpi-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .stats-kpi-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.stats-kpi-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stats-kpi-label {
+    margin-bottom: 8px;
+}
+
+.stats-kpi-value {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.stats-tables-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-top: 48px;
+}
+
+@media (min-width: 1024px) {
+    .stats-tables-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.wise-table__number {
+    text-align: left;
+}
+
+.wise-table {
+    width: 100%;
+}
