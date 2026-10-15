@@ -58,6 +58,8 @@ If you don't want to register, you can log in using one of these predefined acco
   4242 4242 4242 4242
   ```
 
+  The refund functionality is intentionally basic and limited. It was designed as a purely administrative feature to handle exceptional situations, particularly when a film that has already been rented becomes unavailable. For this reason, refunds are processed manually by the administrator.
+
 ### 2. Initial Movie Poster Images (Optional)
 
 By default, the system already contains some movies. To view their associated posters:
