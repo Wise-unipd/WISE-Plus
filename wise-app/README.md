@@ -60,9 +60,9 @@ If you don't want to register, you can log in using one of these predefined acco
 
 By default, the system already contains some movies. To view their associated posters:
 
-1. Go to the [latest release](https://github.com/Wise-unipd/WISE-Plus/releases/latest/download/uploads.zip) of this repository and download `uploads.zip` from the release assets
+1. Go to the [latest release](https://github.com/Wise-unipd/WISE-Plus/releases/latest) of this repository and download `uploads.zip` from the release assets
 2. Ensure that the `data/uploads` folder exists in the root directory (if it doesn't exist yet, simply create it)
-3. Extract the contents of `uploads.zip` directly into `data/uploads/`  
+3. Extract the contents of `uploads.zip` directly into `data/uploads/`
 
 **Note:** If you skip this part, the app will continue to function normally. However, existing movie entries will display placeholder or invalid images until you upload new ones. You can also perform the extraction described in step 3 after launching the app, since Docker automatically creates the `data/uploads` folder.
 
