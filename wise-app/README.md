@@ -49,7 +49,9 @@ If you don't want to register, you can log in using one of these predefined acco
 | Staff | staff@gmail.com | 12345678 |
 | Standard User | prova@gmail.com | 12345678 |
 
-### Note
+### Notes
+
+  If you log in with a Staff or Admin account, you will have access to additional features and sections, depending on the role.
   
   To simulate the payment, here is a test credit card number:
   ```
@@ -92,6 +94,7 @@ From the root folder, choose the command that fits your needs:
   
   ```bash
   docker compose build --no-cache
+  docker compose up -d
   ```
 
 ### Option B: Local Development
@@ -117,7 +120,7 @@ Sometimes antiviruses or firewalls try to block TLS when sending emails. If you 
 
 Windows uses CRLF as the end-of-line character, while Linux/Docker systems expect LF. We've included a `.gitattributes` file that should fix this. If containers with entrypoints fail to start, open your editor, select the faulty file, and change the format (bottom right) from CRLF to LF. Then save the file.
 
-### Stop the Application
+### 6. Stop the Application
 
 To stop and remove containers, launch:
 
@@ -125,7 +128,7 @@ To stop and remove containers, launch:
   docker compose down
   ```
 
-### Full reset
+### 7. Full reset
 
 If you modify the `schema.sql` file and want to re-initialize the database from scratch, you must remove the persistent volumes (this will delete the data stored in the database!).
 
