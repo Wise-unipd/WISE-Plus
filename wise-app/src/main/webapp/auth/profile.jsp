@@ -189,7 +189,7 @@
                         <div class="refund-info-box">
                             <h3 class="refund-info-title">Need a refund?</h3>
                             <p class="refund-info-text">
-                                Write an email to <a href="mailto:admin@wise.com" class="refund-info-link">admin@wise.com</a>
+                                Write an email to <a href="mailto:wise.unipd@gmail.com?subject=Refund%20Request" class="refund-info-link">wise.unipd@gmail.com</a>
                                 specifying the rented movie and your motivations for the request.
                             </p>
                         </div>
